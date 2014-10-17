@@ -6,9 +6,10 @@
   function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   }
+  
 </script>
 	<head>
-		<title>All Teams</title>
+		<title>Team</title>
 	</head>
 	<?php
 		$teamAcro = "WISE";
@@ -26,17 +27,17 @@
 				<input type = "radio" name = "status">Projects 
 				<input type = "radio" name = "status">Skills
 				<br />
-				<span align = "left">General Information </span> <span style = "float:right"><a href = "editGeneralInformation.php?tid=".<?php print $tid ?>>edit</a></span>
+				<span align = "left">General Information </span> <span style = "float:right"><button type = "button" onClick="document.getElementById('giFrame').src = 'editGeneralInformation.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
 				<hr />
-				<iframe src = "generalInfo.php?tid".<?php print $tid ?> width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
+				<iframe id = "giFrame" src = "generalInfo.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
 				<br />
-				<span align = "left">Team Information </span> <span style = "float:right" ><a href = "editTeamInformation.php?tid=".<?php print $tid ?>>edit</a></span>
+				<span align = "left">Team Information </span> <span style = "float:right" ><button type = "button" onClick="document.getElementById('tiFrame').src = 'editTeamInformation.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
 				<hr />
-				<iframe src = "teamInfo.php?tid".<?php print $tid ?> width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
+				<iframe id = "tiFrame" src = "teamInformation.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
 				<br />
-				<span align = "left">Photos</span> <span style = "float:right"><a href = "editPhoto.php?tid=".<?php print $tid ?>>edit</a></span>
+				<span align = "left">Photos</span> <span style = "float:right"><button type = "button" onClick="document.getElementById('pFrame').src = 'editPhotos.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
 				<hr />
-				<iframe src = "photo.php?tid".<?php print $tid ?> width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
+				<iframe id = "pFrame" src = "photo.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
 				
 				
 			</div>
