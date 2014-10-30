@@ -37,11 +37,11 @@
 	<body>
 	<form action = "editGeneralInformation.php?tid=<?php print $tid ?>" method = "post">
 		<p>Name</p>
-		<?php print "<input type = 'text' value = ". $teamName . " name = 'teamName' id = 'teamName' />"; ?>
+		<?php print "<input type = 'text' value = '". $teamName . "' name = 'teamName' id = 'teamName' />"; ?>
 		<p>Acronym</p>
-		<?php print "<input type = 'text' value = ". $teamAcro . " name = 'teamAcro' id = 'teamAcro' />"; ?>
+		<?php print "<input type = 'text' value = '". $teamAcro . "' name = 'teamAcro' id = 'teamAcro' />"; ?>
 		<p>Website</p>
-		<?php print "<input type = 'text' value = ". $teamWeb . " name = 'teamWeb' id = 'teamWeb' />"; ?>
+		<?php print "<input type = 'text' value = '". $teamWeb . "' name = 'teamWeb' id = 'teamWeb' />"; ?>
 		<p>Description</p>
 		<?php print "<textarea name = 'teamDes' style = 'width:100%' rows = '4' cols = '50'>" . $teamDes . "</textarea>";?>
 		<br />

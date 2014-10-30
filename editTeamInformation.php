@@ -64,17 +64,17 @@
 	<body>
 	<form action = "editTeamInformation.php?tid=<?php print $tid ?>" method = "post">
 		<p>Instructor</p>
-		<?php print "<input type = 'text' value = ". $instName . " name = 'instName' id = 'instName' />"; ?>
+		<?php print "<input type = 'text' value = '". $instName . "' name = 'instName' id = 'instName' />"; ?>
 		<p>Instructor Email</p>
-		<?php print "<input type = 'text' value = ". $instEmail . " name = 'instEmail' id = 'instEmail' />"; ?>
+		<?php print "<input type = 'text' value = '". $instEmail . "' name = 'instEmail' id = 'instEmail' />"; ?>
 		<p>Phone Number</p>
-		<?php print "<input type = 'text' value = ". $instPhone . " name = 'instPhone' id = 'instPhone' />"; ?>
+		<?php print "<input type = 'text' value = '". $instPhone . "' name = 'instPhone' id = 'instPhone' />"; ?>
 		<p>Teaching Assistant</p>
-		<?php print "<input type = 'text' value = ". $taName . " name = 'taName' id = 'taName' />"; ?>
+		<?php print "<input type = 'text' value = '". $taName . "' name = 'taName' id = 'taName' />"; ?>
 		<p>Teaching Assistant Email</p>
-		<?php print "<input type = 'text' value = ". $taEmail . " name = 'taEmail' id = 'taEmail' />"; ?>
+		<?php print "<input type = 'text' value = '". $taEmail . "' name = 'taEmail' id = 'taEmail' />"; ?>
 		<p>Teaching Assistant Phone</p>
-		<?php print "<input type = 'text' value = ". $taPhone . " name = 'taPhone' id = 'taPhone' />"; ?>
+		<?php print "<input type = 'text' value = '". $taPhone . "' name = 'taPhone' id = 'taPhone' />"; ?>
 		<br />
 		<input name = "save" type = "submit" value = "Save"/>
 	</form>
