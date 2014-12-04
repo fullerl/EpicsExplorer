@@ -1,7 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-<link rel = "stylesheet" type = "text/css" href = "template.css">
+<?php
+	require_once "includes.php";
+?>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
 		<title>General Information</title>
 	</head>
@@ -36,16 +39,16 @@
 
 	<body>
 	<form action = "editGeneralInformation.php?tid=<?php print $tid ?>" method = "post">
-		<p>Name</p>
-		<?php print "<input type = 'text' value = ". $teamName . " name = 'teamName' id = 'teamName' />"; ?>
-		<p>Acronym</p>
-		<?php print "<input type = 'text' value = ". $teamAcro . " name = 'teamAcro' id = 'teamAcro' />"; ?>
-		<p>Website</p>
-		<?php print "<input type = 'text' value = ". $teamWeb . " name = 'teamWeb' id = 'teamWeb' />"; ?>
-		<p>Description</p>
+		<label>Name</label>
+		<?php print "<input class='form-control' class='form-control' class='form-control' type = 'text' value = '". $teamName . "' name = 'teamName' id = 'teamName' />"; ?>
+		<label>Acronym</label>
+		<?php print "<input class='form-control' class='form-control' class='form-control' type = 'text' value = '". $teamAcro . "' name = 'teamAcro' id = 'teamAcro' />"; ?>
+		<label>Website</label>
+		<?php print "<input class='form-control' class='form-control' class='form-control' type = 'text' value = '". $teamWeb . "' name = 'teamWeb' id = 'teamWeb' />"; ?>
+		<label>Description</label>
 		<?php print "<textarea name = 'teamDes' style = 'width:100%' rows = '4' cols = '50'>" . $teamDes . "</textarea>";?>
 		<br />
-		<input name = "save" type = "submit" value = "Save" />
+		<input class='form-control' class='form-control' class='form-control' name = "save" type = "submit" value = "Save" />
 	</form>
 	</body>
 </html>

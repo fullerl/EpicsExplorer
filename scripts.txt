@@ -1,7 +1,0 @@
-Drop procedure if exists SP_FIND_INSTRUCTOR_ID;
-Create Procedure SP_FIND_INSTRUCTOR_ID(IN tid INT(11), OUT iid INT)
-Select IID into iid from team where TID = tid;
-
-Drop procedure if exists SP_FIND_TA_ID;
-Create Procedure SP_FIND_TA_ID(IN tid INT(11), OUT taid INT)
-Select TAID into taid from team where TID = tid;

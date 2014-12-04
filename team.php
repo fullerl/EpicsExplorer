@@ -1,12 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-<link rel = "stylesheet" type = "text/css" href = "template.css">
-<script language="javascript" type="text/javascript">
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-  }
-  
+<?php
+	require_once "includes.php";
+?>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/ui/1.11.3/jquery-ui.js"></script>
+<script>
+	function resizeIframe(obj) {
+		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+	}
+	$(function() {
+		$("#tabs").tabs();
+	});
+	
 </script>
 	<head>
 		<title>Team</title>
@@ -14,33 +22,45 @@
 	<?php
 		$teamAcro = "WISE";
 		$teamName = "Web-based Interactive Software Engineering";
-		$tid = 1;
+		$tid = $_GET['tid'];
+		$GI_Status = "checked";
+		$did = $_GET['did'];
+		//$Projects_status = "unchecked";
+		//$Skills_status = "unchecked";
 	?>
 
 	<body>
-		<div>
-			<h1> <a href = "schools.php" /> Schools <a href = "allteams.php"> All Teams </a> <a href = "team.php">Teams</a></h1>
-			<div>
-				<?php print $teamAcro ?> <br />
-				<?php print $teamName ?> <br />
-				<input type = "radio" name = "status">General Information
-				<input type = "radio" name = "status">Projects 
-				<input type = "radio" name = "status">Skills
-				<br />
-				<span align = "left">General Information </span> <span style = "float:right"><button type = "button" onClick="document.getElementById('giFrame').src = 'editGeneralInformation.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
-				<hr />
-				<iframe id = "giFrame" src = "generalInfo.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
-				<br />
-				<span align = "left">Team Information </span> <span style = "float:right" ><button type = "button" onClick="document.getElementById('tiFrame').src = 'editTeamInformation.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
-				<hr />
-				<iframe id = "tiFrame" src = "teamInformation.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
-				<br />
-				<span align = "left">Photos</span> <span style = "float:right"><button type = "button" onClick="document.getElementById('pFrame').src = 'editPhotos.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
-				<hr />
-				<iframe id = "pFrame" src = "photo.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
-				
-				
-			</div>
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li role="navigate"><a href = "schools.php"> Schools </a></li>
+				<li role="navigate"><a href = "allteams.php?did=<?php print $did; ?>"> All Teams </a></li>
+				<li role="navigate" class="active"><a href = "#">Teams</a></li>
+			</ul>
+			<form action="team.php" enctype = "multipart/form-data" method="post">
+				<div id = "tabs">
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active"><a href = "#">Team</a></li>
+						<li role="presentation"><a href = "team2.php?tid=<?php print $tid; ?>&did=<?php print $did; ?>">Skills</a></li>
+					</ul>
+					<div id = "tabs-Team">
+						<?php print $teamAcro ?> <br />
+						<?php print $teamName ?> <br />
+						
+						<br />
+						<span align = "left"><label>General Information</label></span> <span style = "float:right"><button type = "button" onClick="document.getElementById('giFrame').src = 'editGeneralInformation.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
+						<hr />
+						<iframe id = "giFrame" src = "generalInfo.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
+						<br />
+						<span align = "left"><label>Team Information</label> </span> <span style = "float:right" ><button type = "button" onClick="document.getElementById('tiFrame').src = 'editTeamInformation.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
+						<hr />
+						<iframe id = "tiFrame" src = "teamInformation.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
+						<br />
+						<span align = "left"><label>Projects</label></span> <span style = "float:right"><button type = "button" onClick="document.getElementById('pFrame').src = 'editProjects.php?tid=<?php print $tid; ?>'" style = "background:none;border:none">edit</button></span>
+						<hr />
+						<iframe id = "pFrame" src = "projects.php?tid=<?php print $tid; ?>" width = "100%" seamless = "seamless" scrolling = "auto" onload='javascript:resizeIframe(this);'></iframe>
+					</div>
+				</div>
+			</form>
 		</div>
 	</body>
 </html>

@@ -1,28 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-<link rel = "stylesheet" type = "text/css" href = "template.css">
+<?php
+	require_once "includes.php";
+?>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
 		<title>Projects</title>
 	</head>
 	<?php
-		//$tid = $_GET['tid'];
-		$teams = array(array("EPICS", "Fall 2012", "Tool that helps students to select a team.", 10), array("EPICS", "Fall 2012", "Tool that helps students to select a team.", 90));
+		require_once "dbconnect.php";
+		$tid = $_GET['tid'];
+		//$teams = array(array("EPICS", "Fall 2012", "Tool that helps students to select a team.", 10), array("EPICS", "Fall 2012", "Tool that helps students to select a team.", 90));
 		$count = 1;
-		print "<body>";
-		foreach ($teams as $project) {
-			print "<p>Project " . $count . "</p>";
-			print $project[0];
-			print "<p>Initial period</p>";
-			print $project[1];
-			print "<p>Description</p>";
-			print $project[2];
-			print "<p>Progress</p>";
-			print "<progress value = " . $project[3] . " max = '100'></progress> " . $project[3] . "%";
-			print "<hr>";
-			$count++;
+		//print "<body>";
+		$sql = "SELECT PJID from team_project where TID = '$tid' and end IS NULL";
+		$result = mysql_query($sql, $conn) or die(mysql_error());
+		while ($pjid = mysql_fetch_assoc($result)['PJID']) {
+			$sql = "SELECT * from project where PJID = '$pjid'";
+			$result1 = mysql_query($sql, $conn) or die(mysql_error());
+			while($project = mysql_fetch_assoc($result1)) {
+				print "<label>Project " . $count . "</label><br>";
+				print $project['Name']."<br>";
+				print "<label>Initial period</label><br>";
+				print $project['Start']."<br>";
+				print "<label>Description</label><br>";
+				print $project['Description']."<br>";
+				print "<label>Progress</label><br>";
+				print "<div class='progress'><div class='progress-bar' role='progress-bar' area-valuenow = " . $project['Progress'] . " aria-valuemin='0' area-valuemax = '100' style='width: ". $project['Progress']."%;'>".$project['Progress']."%</div></div>";
+				print "<hr>";
+				$count++;
+			}
 		}
-		print "</body>";
+		//print "</body>";
 	?>
 </html>
 		
