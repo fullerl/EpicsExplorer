@@ -39,6 +39,7 @@
 
 	<body>
 	<form action = "editGeneralInformation.php?tid=<?php print $tid ?>" method = "post">
+
 		<label>Name</label>
 		<?php print "<input class='form-control' class='form-control' class='form-control' type = 'text' value = '". $teamName . "' name = 'teamName' id = 'teamName' />"; ?>
 		<label>Acronym</label>
@@ -46,6 +47,7 @@
 		<label>Website</label>
 		<?php print "<input class='form-control' class='form-control' class='form-control' type = 'text' value = '". $teamWeb . "' name = 'teamWeb' id = 'teamWeb' />"; ?>
 		<label>Description</label>
+
 		<?php print "<textarea name = 'teamDes' style = 'width:100%' rows = '4' cols = '50'>" . $teamDes . "</textarea>";?>
 		<br />
 		<input class='form-control' class='form-control' class='form-control' name = "save" type = "submit" value = "Save" />
